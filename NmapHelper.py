@@ -12,7 +12,7 @@ def prog():
 	userinput = raw_input("Enter Ip or Domain You want to Scan: ")
 	print "\nOS_detection      = 1"
 	print "TCP_connect_scan  = 2"
-	print "Sys_scan          = 3"
+	print "Syn_scan          = 3"
 	print "Fin_scan          = 4"
 	print "Xmas_scan         = 5"
 	print "Null_scan         = 6"
@@ -44,15 +44,20 @@ def prog():
 		subprocess.call(["nmap", "-sU", userinput])
 	else:
 		print "An Invalid Option"
+	return;
+	
+def redo():
+	redo = raw_input("Do you want to Scan Again? Give Y to Continue any other to Quit: ")
+	while redo == "Y":
+		prog()
+	else:
+		print "Good Bye"
+		quit()
+
 prompt = raw_input("\nWelcome to Nmap Help. Give Y to Continue or any other key to Quit: ")
-if prompt == "Y" or "y" or "yes" or "YES" or "Yes":
+if prompt == "Y":
 	prog()
+	redo()
 else:
-	print "Good Bye"
-	quit()
-like = raw_input("Do you want to Scan Again? Give Y to Continue any other to Quit: ")
-while like == "Y":
-	prog()
-while like != "Y":
 	print "Good Bye"
 	quit()
